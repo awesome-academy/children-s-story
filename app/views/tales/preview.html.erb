@@ -20,7 +20,11 @@
           </p>
           <div class="product_meta">
             <span class="posted_in"> <strong>Thể Loại: </strong> <%= link_to @tale.category.name, category_path(@tale.category.id) %></span>
-            <span class="tagged_as"><strong>Tác Giả: </strong><%= @tale.author %>.</span>
+            <% if current_user.admin? %>
+              <span class="posted_in"><strong>Tác Giả: </strong><%= link_to @tale.author.name, author_path(@tale.author.id) %></span>
+            <% else %>
+              <span class="posted_in"><strong>Tác Giả: </strong><%= @tale.author%></span>
+            <% end %>
           </div>
           <section class="stats">
             <%= render "shared/stats" %>

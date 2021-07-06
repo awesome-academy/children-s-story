@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
+  resources :authors
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
 end

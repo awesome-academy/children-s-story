@@ -1,28 +1,32 @@
-<div class="row">
-  <div class="col-md-8 col-sm-12 form_all">
-    <section class="user_info">
-      <% @tale.tale_contents.each do |tale_content| %>
-        <div class="tale-content">
-          <% if tale_content.image.attached? %>
-            <div class="img-picture">
-              <%= image_tag url_for(tale_content.image) %>
-            </div>
-          <% elsif tale_content.audio.attached? %>
-            <div class="audio-content">
-              <audio src="<%= audio_path rails_blob_url tale_content.audio %>" type="audio/mpeg" controls></audio>
-            </div>
-          <% else %>
-            <div class="text-content">
-              <%= tale_content.text %>
-            </div>
-          <% end %>
-        <div>
-      <% end %>
-      </br>
-      <% if current_user.admin? %>
-        <button id="sendMessageButton" type="submit"><%= link_to "edit", edit_tale_path(@tale) %></button>
-        <button id="sendMessageButton" type="submit"><%= link_to "delete",tale_path(@tale), method: :delete %></button>
-      <% end %>
-    </section>
+<% if logged_in?%>
+  <div class="row">
+    <div class="col-md-8 col-sm-12 form_all">
+      <section class="user_info">
+        <% @tale.tale_contents.each do |tale_content| %>
+          <div class="tale-content">
+            <% if tale_content.image.attached? %>
+              <div class="img-picture">
+                <%= image_tag url_for(tale_content.image) %>
+              </div>
+            <% elsif tale_content.audio.attached? %>
+              <div class="audio-content">
+                <audio src="<%= audio_path rails_blob_url tale_content.audio %>" type="audio/mpeg" controls></audio>
+              </div>
+            <% else %>
+              <div class="text-content">
+                <%= tale_content.text %>
+              </div>
+            <% end %>
+          <div>
+        <% end %>
+        </br>
+        <% if current_user.admin? %>
+          <button id="sendMessageButton" type="submit"><%= link_to "sửa", edit_tale_path(@tale) %></button>
+          <button id="sendMessageButton" type="submit"><%= link_to "xóa",tale_path(@tale), method: :delete %></button>
+        <% end %>
+      </section>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "sessions/form" %>
+<% end %>

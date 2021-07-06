@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
             items:1
         },
         500:{
-            items:3
+            items:6
         },
         1000:{
             items:7
@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function() {
             items:1
         },
         750:{
-            items:4
+            items:5
         },
         1000:{
             items:6

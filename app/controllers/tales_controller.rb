@@ -94,7 +94,7 @@ class TalesController < ApplicationController
 
   private
     def tale_params
-      params.require(:tale).permit(:title, :description, :author, :category_id, :image,
+      params.require(:tale).permit(:title, :description, :author, :category_id, :image, :author_id,
         tale_contents_attributes: [:id, :image, :audio, :text, :content_type, :_destroy])
     end
 

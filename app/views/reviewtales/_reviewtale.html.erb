@@ -4,7 +4,7 @@
 
 <% if logged_in? %>
   <% if reviewtale.user_id == current_user.id%>
-    <button id="sendMessageButton" type="submit"><%= link_to "edit",  edit_tale_reviewtale_path(tale_id: reviewtale.tale.id,id: reviewtale.id) %></button>
-    <button id="sendMessageButton" type="submit"><%= link_to "delete", tale_reviewtale_path(tale_id: reviewtale.tale.id,id: reviewtale.id), method: :delete %></button>
+    <button id="sendMessageButton" type="submit"><%= link_to "sửa",  edit_tale_reviewtale_path(tale_id: reviewtale.tale.id,id: reviewtale.id) %></button>
+    <button id="sendMessageButton" type="submit"><%= link_to "xóa", tale_reviewtale_path(tale_id: reviewtale.tale.id,id: reviewtale.id), method: :delete %></button>
   <% end %>
 <% end %>

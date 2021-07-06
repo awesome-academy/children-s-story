@@ -1,17 +1,2 @@
 <%provide(:title,"Log in")%>
-<h1 class="login">Đăng nhập</h1>
-<div class="row">
-  <div class="col-md-4 offset-md-4" style="margin:auto">
-    <%=form_for(:session,url: login_path)do|f|%>
-      <%=f.label:email%><%=f.email_field:email,class:'form-control'%>
-      <%=f.label:password%>
-      <%=f.password_field:password,class:'form-control'%>
-      <%=f.label :remember_me, class:"checkbox inline" do %>
-        <%=f.check_box :remember_me%>
-        <span>Lưu tài khoản</span>
-      <%end%>
-      <%=f.submit"Đăng nhập",class:"btn btn-primary"%>
-    <%end%>
-    <p>Bạn chưa có tài khoản?: <%=link_to "Đăng ký ngay!", signup_path%></p>
-  </div>
-</div>
+<%= render "form" %>

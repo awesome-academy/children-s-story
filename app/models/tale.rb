@@ -1,5 +1,6 @@
 class Tale < ApplicationRecord
   belongs_to :category
+  belongs_to :author
   has_one_attached :image
   scope :views_rating_by_day, -> { order(view: :desc )}
   scope :order_by_id, -> { order(id: :desc) }

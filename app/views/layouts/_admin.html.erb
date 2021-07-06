@@ -19,14 +19,21 @@
         </ul>
       </li>
       <li>
-        <a href="#category" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false">Thể loại</a>
+        <a href="#category" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false"><i class='fa fa-list-alt'>  Thể loại </i></a>
         <ul class="collapse list-unstyled" id="category">
           <li><%= link_to "Tạo thể loại", new_category_path , class: "nav-link" %></li>
           <li><%= link_to "Tất cả thể loại", categories_path, class: "nav-link" %></li>
         </ul>
       </li>
       <li>
-        <a href="#request" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false">Phản hồi</a>
+        <a href="#author" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false"><i class='fa fa-user-md'>  Tác giả </i></a>
+        <ul class="collapse list-unstyled" id="author">
+          <li><%= link_to "Tạo thể loại", new_author_path , class: "nav-link" %></li>
+          <li><%= link_to "Tất cả thể loại", authors_path, class: "nav-link" %></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#request" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false"><i class='fa fa-envelope-o'>  Phản hồi </i></a>
         <ul class="collapse list-unstyled" id="request">
           <li><%= link_to "Yêu cầu thêm truyện", show_archived_tales_path , class: "nav-link" %></li>
           <li><%= link_to "Tất cả phản hồi", requests_path , class: "nav-link" %></li>
@@ -34,9 +41,7 @@
           <li><%= link_to "Phản hồi chưa xem", show_not_seen_requests_path , class: "nav-link" %></li>
         </ul>
       </li>
-      <li>
-        <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item"%>
-      </li>
+      <li><%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item"%></li>
     </ul>
   </nav>
 

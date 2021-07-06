@@ -1,5 +1,5 @@
   <%= link_to category.name, category,class: "dropdown-item" %>
   <% if current_user.admin? %>
-      <button id="sendMessageButton" type="submit"><%= link_to "edit", edit_category_path(category.id) %></button>
-      <button id="sendMessageButton" type="submit"><%= link_to "delete", category, method: :delete,  data: { confirm: "You sure?" } %></button>
+      <button id="sendMessageButton" type="submit"><%= link_to "xóa", edit_category_path(category.id) %></button>
+      <button id="sendMessageButton" type="submit"><%= link_to "sửa", category, method: :delete,  data: { confirm: "bạn chắc chứ?" } %></button>
   <% end %>

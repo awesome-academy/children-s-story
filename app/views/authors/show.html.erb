@@ -1,0 +1,39 @@
+<div class="container bootdey">
+  <div class="col-md-12 col-sm-12">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="col-md-4 col-sm-4">
+          <div class="pro-img-details">
+            <%= image_tag @author.image if @author.image.attached? %>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+          <h4 class="pro-d-title">
+            <h2>Tác Giả: <%= @author.name %></h2>
+          </h4>
+          <div class="product_meta">
+            <span class="tagged_as"><strong>Tiểu sử: </strong><%= @author.profile %></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="container">
+  <div class="margin-top">
+    <% @author.tales.each do |tale|%>
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card product_item">
+          <div class="body">
+              <div class="cp_img">
+                <%= image_tag tale.image if tale.image.attached? %>
+              </div>
+              <div class="product_details">
+                <h5 class="text-overflow"><%= link_to tale.title, preview_tale_path(tale.id) %></h5>
+              </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

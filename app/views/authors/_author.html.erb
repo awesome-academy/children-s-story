@@ -1,0 +1,5 @@
+<%= link_to author.name, author,class: "dropdown-item" %>
+<% if current_user.admin? %>
+    <button id="sendMessageButton" type="submit"><%= link_to "sửa", edit_author_path(author.id) %></button>
+    <button id="sendMessageButton" type="submit"><%= link_to "xóa", author, method: :delete,  data: { confirm: "bạn chắc chứ?" } %></button>
+<% end %>
