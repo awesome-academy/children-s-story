@@ -28,7 +28,7 @@ development:
   pool: 5
   username: postgres
   password: 1
-  host: localhost
+  host: db
 
 test: &TEST
   adapter: postgresql
@@ -37,7 +37,7 @@ test: &TEST
   pool: 5
   username: postgres
   password: 1
-  host: localhost
+  host: db
 
 production:
   adapter: postgresql
@@ -46,7 +46,7 @@ production:
   pool: 5
   username: postgres
   password: 1
-  host: localhost
+  host: db
 
 cucumber:
   <<: *TEST

@@ -1,0 +1,28 @@
+version: '3.7'
+volumes:
+  postgres_data: {}
+
+services:
+  app:
+    container_name: children-s-story_app
+    command: sh ./docker/app/command.sh
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    container_name: children-s-story_db
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
