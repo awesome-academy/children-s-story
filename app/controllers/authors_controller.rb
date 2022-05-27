@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :find_author, only: [:show, :edit, :update, :destroy]
-  
+
   def new
     @author = Author.new
   end
@@ -10,7 +10,7 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect_to @author
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -18,18 +18,16 @@ class AuthorsController < ApplicationController
     @authors = Author.search(params[:term])
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @author.update(author_params)
       redirect_to author_path(@author)
     else
-      render "edit"
-    end  
+      render 'edit'
+    end
   end
 
   def destroy
@@ -41,9 +39,7 @@ class AuthorsController < ApplicationController
 
   def find_author
     @author = Author.includes(:table).find_by(id: params[:id])
-    unless @author
-      redirect_to root_path
-    end
+    redirect_to root_path unless @author
   end
 
   def author_params

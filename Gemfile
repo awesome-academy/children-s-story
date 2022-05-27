@@ -20,15 +20,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
+gem 'active_storage_validations', '0.8.2'
+gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '3.4.1'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap4'
-gem 'active_storage_validations', '0.8.2'
+gem 'cocoon'
 gem 'image_processing'
 gem 'mini_magick'
-gem 'aws-sdk-s3', require: false
-gem "cocoon"
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -42,15 +42,15 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry'
   gem 'rubocop', '~> 1.14', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do

@@ -23,17 +23,17 @@ class TalesController < ApplicationController
   end
 
   def preview
-    if @tale.reviewtales.blank?
-      @average_reviewtale = 0
-    else
-      @average_reviewtale = @tale.reviewtales.average(:rating)
-    end
+    @average_reviewtale = if @tale.reviewtales.blank?
+                            0
+                          else
+                            @tale.reviewtales.average(:rating)
+                          end
   end
 
   def show
     @tale.update_attribute :view, @tale.view.to_i + 1
   end
-  
+
   def new
     @tale = Tale.new
   end
@@ -41,28 +41,26 @@ class TalesController < ApplicationController
   def create
     @tale = Tale.new(tale_params)
     @tale.image.attach(params[:tale][:image])
-    @tale.status = current_user.admin? ? "active" : "archived"
+    @tale.status = current_user.admin? ? 'active' : 'archived'
     @tale.user_id = current_user.id
-    
+
     if @tale.save
-      flash[:success] = "Thêm truyện thành công"
+      flash[:success] = 'Thêm truyện thành công'
       redirect_to @tale
     else
-      flash[:danger] = "Thêm truyện không thành công" 
-      render "new"
+      flash[:danger] = 'Thêm truyện không thành công'
+      render 'new'
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update_status
     if @tale.active!
-      flash[:success] = "Thêm truyện thành công"
+      flash[:success] = 'Thêm truyện thành công'
     else
-      flash[:danger] = "Thêm truyện không thành công" 
-    end 
+      flash[:danger] = 'Thêm truyện không thành công'
+    end
     redirect_to show_archived_tales_path
   end
 
@@ -70,8 +68,8 @@ class TalesController < ApplicationController
     if @tale.update(tale_params)
       redirect_to tale_path(@tale)
     else
-      flash[:success] = "cập nhật không thành công"
-      render "edit"
+      flash[:success] = 'cập nhật không thành công'
+      render 'edit'
     end
   end
 
@@ -81,34 +79,33 @@ class TalesController < ApplicationController
   end
 
   def followers
-    @title = "Followers"
+    @title = 'Followers'
     @tale = Tale.find_by(id: params[:id])
     @tales = @tale.followers.paginate(page: params[:page])
-    render "show_follow"
+    render 'show_follow'
   end
 
   def favouriters
-    @title = "Favouriters"
+    @title = 'Favouriters'
     @tale = Tale.find_by(id: params[:id])
     @tales = @tale.favouriters.paginate(page: params[:page])
-    render "show_favourite"
+    render 'show_favourite'
   end
 
   private
-    def tale_params
-      params.require(:tale).permit(:title, :description, :author_user, :category_id, :image, :author_id, :user_id,
-        tale_contents_attributes: [:id, :image, :audio, :text, :content_type, :_destroy])
-    end
 
-    def find_tale
-      @tales = Tale.all
-      @tale = Tale.find_by(id:params[:id])
-      unless @tale
-        redirect_to root_path
-      end
-    end
-    
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def tale_params
+    params.require(:tale).permit(:title, :description, :author_user, :category_id, :image, :author_id, :user_id,
+                                 tale_contents_attributes: [:id, :image, :audio, :text, :content_type, :_destroy])
+  end
+
+  def find_tale
+    @tales = Tale.all
+    @tale = Tale.find_by(id: params[:id])
+    redirect_to root_path unless @tale
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end

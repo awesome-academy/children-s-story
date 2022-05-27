@@ -17,14 +17,13 @@ class ReviewtalesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @reviewtale.update(reviewtale_params)
       redirect_to preview_tale_path(@tale)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -35,21 +34,17 @@ class ReviewtalesController < ApplicationController
 
   private
 
-    def reviewtale_params
-      params.require(:reviewtale).permit(:rating, :comment)
-    end
+  def reviewtale_params
+    params.require(:reviewtale).permit(:rating, :comment)
+  end
 
-    def find_tale
-      @tale = Tale.find_by(id: params[:tale_id])
-      unless @tale
-        redirect_to root_path
-      end
-    end
-    
-    def find_reviewtale
-      @reviewtale = Reviewtale.find_by(id: params[:id])
-      unless @reviewtale
-        redirect_to root_path
-      end
-    end
+  def find_tale
+    @tale = Tale.find_by(id: params[:tale_id])
+    redirect_to root_path unless @tale
+  end
+
+  def find_reviewtale
+    @reviewtale = Reviewtale.find_by(id: params[:id])
+    redirect_to root_path unless @reviewtale
+  end
 end

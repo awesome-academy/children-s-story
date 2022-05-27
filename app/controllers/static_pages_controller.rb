@@ -14,9 +14,7 @@ class StaticPagesController < ApplicationController
     @many_followers_admin = Tale.active.sort_by_follow[0..5]
   end
 
-  def about
-  end
+  def about; end
 
-  def contact
-  end
+  def contact; end
 end

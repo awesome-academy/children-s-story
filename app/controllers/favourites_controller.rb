@@ -18,7 +18,8 @@ class FavouritesController < ApplicationController
   end
 
   private
-    def find_favourite
-      @tale = Tale.find_by(id: params[:favourited_id])
-    end
+
+  def find_favourite
+    @tale = Tale.find_by(id: params[:favourited_id])
+  end
 end
